@@ -18,11 +18,7 @@ export default function HomePage({setCurrentLocation}: HomePageProps) {
 
   type SelectionType = "TRAINER" | "LEG" | "WEATHER" | "ROAD";
 
-  useEffect(() => { 
-    window.addEventListener("load", () => { 
-      setCurrentLocation("Home");
-    })
-  }, []);
+
 
   const graphicsConfig: { selection: SelectionType; position: string }[] = [
     { selection: "TRAINER", position: "bottom-44 left-1/3" },
@@ -71,7 +67,7 @@ export default function HomePage({setCurrentLocation}: HomePageProps) {
         <HomePageContent  />
       </div>
 
-      <About setCurrentLocation={setCurrentLocation}  />
+    
     </>
   );
 }

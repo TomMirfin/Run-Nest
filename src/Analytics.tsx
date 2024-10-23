@@ -3,7 +3,7 @@ import { Gauge, SparkLineChart } from "@mui/x-charts";
 import { BarChart } from "@mui/x-charts/BarChart";
 export default function Analytics() {
   return (
-    <div className="ml-60 mt-20">
+    <div className="ml-60 mt-20 h-screen" id="Analytics">
       <BarChart
         series={[
           { data: [35, 44, 24, 34] },
