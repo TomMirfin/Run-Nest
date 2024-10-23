@@ -1,21 +1,28 @@
 import backgroundImage from "../src/assets/images/pexels-nappy-936094.jpg";
-import HomePageContent from "./Homepage/HomePageContent";
+import HomePageContent from './Homepage/HomePageContent';
 
 import { motion } from "framer-motion";
 import HomePageGraphics from "./Homepage/HomepageGraphics";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Textoverlay from "./Homepage/Textoverlay";
 import About from "./About";
 
 interface HomePageProps {
-  sectionRef: React.RefObject<HTMLDivElement>;
+ 
+ setCurrentLocation: (location: string) => void;
 }
 
-export default function HomePage({ sectionRef }: HomePageProps) {
+export default function HomePage({setCurrentLocation}: HomePageProps) {
   const [showTextOverlay, setShowTextOverlay] = useState(false);
   const [contentToShow, setContentToShow] = useState("");
 
   type SelectionType = "TRAINER" | "LEG" | "WEATHER" | "ROAD";
+
+  useEffect(() => { 
+    window.addEventListener("load", () => { 
+      setCurrentLocation("Home");
+    })
+  }, []);
 
   const graphicsConfig: { selection: SelectionType; position: string }[] = [
     { selection: "TRAINER", position: "bottom-44 left-1/3" },
@@ -44,7 +51,7 @@ export default function HomePage({ sectionRef }: HomePageProps) {
   return (
     <>
       <div
-        ref={sectionRef}
+     
         className="h-screen "
         style={{
           backgroundImage: `url(${backgroundImage})`,
@@ -61,10 +68,10 @@ export default function HomePage({ sectionRef }: HomePageProps) {
             <Textoverlay contentToShow={contentToShow as any} />
           </div>
         )}
-        <HomePageContent />
+        <HomePageContent  />
       </div>
 
-      <About sectionRef={sectionRef} />
+      <About setCurrentLocation={setCurrentLocation}  />
     </>
   );
 }

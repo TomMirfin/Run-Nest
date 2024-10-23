@@ -1,8 +1,20 @@
+import { useEffect, useLayoutEffect } from "react";
 import Reveal from "./Reveal";
 
-export default function About({ sectionRef }) {
+interface AboutProps { 
+  setCurrentLocation: (location: string) => void;
+}
+
+export default function About({setCurrentLocation}: AboutProps) {
+
+  useLayoutEffect(() => { 
+   window.addEventListener("load", () => { 
+      setCurrentLocation("About");
+   })
+  },[])
+
   return (
-    <div className="p-6 bg-gray-100 ml-60 h-screen" id="about" ref={sectionRef}>
+    <div className="p-6 bg-gray-100 ml-60 h-screen" id="about" >
       <h1 className="text-3xl font-bold mb-4">About Run-Nest</h1>
       <Reveal>
         <p className="mb-4">
