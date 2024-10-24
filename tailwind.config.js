@@ -7,7 +7,7 @@ export default {
       qs: { max: "479px" },
       sm: { min: "480px" },
       md: { min: "768px" },
-      lg: { min: "976px" },
+      lg: { max: "1280px" },
       xl: { min: "1440px" },
     },
   },

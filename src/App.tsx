@@ -3,7 +3,7 @@ import BurgerMenu from "./Navigation/BurgerMenu";
 import HomePage from "./HomePage";
 import About from "./About";
 import Analytics from "./Analytics";
-
+import Services from "./Services/Services";
 
 const App = () => {
   const [currentLocation, setCurrentLocation] = useState("Home");
@@ -44,14 +44,25 @@ const App = () => {
       });
     };
   }, []);
-  
+
   return (
     <div>
-      <BurgerMenu scrollToSection={scrollToSection} currentLocation={currentLocation} />
-      <div id="Home" ref={(el) => (sectionsRef.current["Home"] = el)}><HomePage/></div>
-      <div id="About" ref={(el) => (sectionsRef.current["About"] = el)}><About /></div>
-      <div id="Analytics" ref={(el) => (sectionsRef.current["Analytics"] = el)}><Analytics/></div>
-      <div id="Services" ref={(el) => (sectionsRef.current["Services"] = el)}>Services Section</div>
+      <BurgerMenu
+        scrollToSection={scrollToSection}
+        currentLocation={currentLocation}
+      />
+      <div id="Home" ref={(el) => (sectionsRef.current["Home"] = el)}>
+        <HomePage />
+      </div>
+      <div id="About" ref={(el) => (sectionsRef.current["About"] = el)}>
+        <About />
+      </div>
+      <div id="Analytics" ref={(el) => (sectionsRef.current["Analytics"] = el)}>
+        <Analytics sectionsRef={sectionsRef} />
+      </div>
+      <div id="Services" ref={(el) => (sectionsRef.current["Services"] = el)}>
+        <Services />
+      </div>
     </div>
   );
 };

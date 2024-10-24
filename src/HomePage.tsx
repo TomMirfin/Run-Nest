@@ -1,5 +1,5 @@
 import backgroundImage from "../src/assets/images/pexels-nappy-936094.jpg";
-import HomePageContent from './Homepage/HomePageContent';
+import HomePageContent from "./Homepage/HomePageContent";
 
 import { motion } from "framer-motion";
 import HomePageGraphics from "./Homepage/HomepageGraphics";
@@ -8,17 +8,14 @@ import Textoverlay from "./Homepage/Textoverlay";
 import About from "./About";
 
 interface HomePageProps {
- 
- setCurrentLocation: (location: string) => void;
+  setCurrentLocation: (location: string) => void;
 }
 
-export default function HomePage({setCurrentLocation}: HomePageProps) {
+export default function HomePage({ setCurrentLocation }: HomePageProps) {
   const [showTextOverlay, setShowTextOverlay] = useState(false);
   const [contentToShow, setContentToShow] = useState("");
 
   type SelectionType = "TRAINER" | "LEG" | "WEATHER" | "ROAD";
-
-
 
   const graphicsConfig: { selection: SelectionType; position: string }[] = [
     { selection: "TRAINER", position: "bottom-44 left-1/3" },
@@ -47,8 +44,7 @@ export default function HomePage({setCurrentLocation}: HomePageProps) {
   return (
     <>
       <div
-     
-        className="h-screen "
+        className="h-screen w-screen "
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
@@ -64,10 +60,8 @@ export default function HomePage({setCurrentLocation}: HomePageProps) {
             <Textoverlay contentToShow={contentToShow as any} />
           </div>
         )}
-        <HomePageContent  />
+        <HomePageContent />
       </div>
-
-    
     </>
   );
 }
